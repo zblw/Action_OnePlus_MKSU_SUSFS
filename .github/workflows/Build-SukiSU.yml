@@ -315,6 +315,11 @@ jobs:
         with:
          name: Image_KernelSU_${{ env.KSUVER }}_${{ github.event.inputs.FEIL }}
          path: kernel_workspace/kernel
+
+      - name: Create Git Tag
+        run: |
+          git tag ${{ env.RELEASE_TAG }}
+          git push origin ${{ env.RELEASE_TAG }}
           
       - name: Create Release
         uses: softprops/action-gh-release@v1
